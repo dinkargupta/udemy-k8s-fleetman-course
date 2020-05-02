@@ -1,0 +1,28 @@
+# interface spec (claim types)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  storageClassName: mylocalstorage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+# impl. spec. can be many ... the interface is the consumer asks that can be requested by claiming these
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-storage
+spec:
+  storageClassName: mylocalstorage
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /Users/120173/CodePlayground/trainings/k8s-hands-on-cloud-udemy/mongodata-volume
+    type: DirectoryOrCreate
+  

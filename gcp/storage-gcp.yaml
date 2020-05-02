@@ -1,0 +1,23 @@
+# interface spec (claim types)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  storageClassName: gcp-ssd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+# impl. spec. can be many ... the interface is the consumer asks that can be requested by claiming these
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gcp-ssd
+
+provisioner: kubernetes.io/gce-pd
+parameters:
+    type: pd-standard
+  
