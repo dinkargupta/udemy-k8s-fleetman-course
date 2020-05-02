@@ -1,0 +1,6 @@
+docker pull richardchesterwood/k8s-fleetman-webapp-angular:release0
+docker pull richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+
+
+
+gcloud container clusters get-credentials udemy-k8s-fleetman-cluster --zone europe-north1-a --project udemy-k8s-fleetman
